@@ -198,12 +198,12 @@ p25_recorder::p25_recorder(Source *src)
     connect(valve,       0, prefilter,     0);
     connect(prefilter,   0, channel_lpf,   0);
     connect(channel_lpf, 0, arb_resampler, 0);
-connect( arb_resampler, 0, bb_gain, 0);
+connect( arb_resampler, 0, baseband_amp, 0);
     if (squelch_db != 0) {
-      connect(bb_gain, 0, squelch,       0);
+      connect(baseband_amp, 0, squelch,       0);
       connect(squelch,       0, pll_freq_lock, 0);
     } else {
-      connect(bb_gain, 0, pll_freq_lock, 0);
+      connect(baseband_amp, 0, pll_freq_lock, 0);
     }
     connect(pll_freq_lock,        0, pll_amp,              0);
     connect(pll_amp,              0, noise_filter,         0);
