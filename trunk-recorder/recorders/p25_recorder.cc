@@ -251,7 +251,7 @@ connect( arb_resampler, 0, bb_gain, 0);
 }
 
 void p25_recorder::clear() {
-  //op25_frame_assembler->clear();
+  op25_frame_assembler->clear();
 }
 
 void p25_recorder::autotune() {
@@ -329,7 +329,7 @@ Rx_Status p25_recorder::get_rx_status() {
 }
 void p25_recorder::stop() {
   if (state == active) {
-    // op25_frame_assembler->clear();
+    op25_frame_assembler->clear();
     BOOST_LOG_TRIVIAL(info) << "\t- Stopping P25 Recorder Num [" << num << "]\tTG: " << talkgroup << "\tFreq: " << chan_freq << " \tTDMA: " << phase2_tdma << "\tSlot: " << tdma_slot;
     state = inactive;
     valve->set_enabled(false);
@@ -343,10 +343,10 @@ void p25_recorder::stop() {
 void p25_recorder::reset() {
 
 //std::cout << "Pll Phase: " << pll_freq_lock->get_phase() << " min Freq: " << pll_freq_lock->get_min_freq() << " Max Freq: " << pll_freq_lock->get_max_freq() << std::endl;
-  pll_freq_lock->update_gains();
+/*  pll_freq_lock->update_gains();
   pll_freq_lock->frequency_limit();
   pll_freq_lock->phase_wrap();
-  fsk4_demod->reset();
+  fsk4_demod->reset();*/
   //pll_demod->set_phase(0);
 
 }
